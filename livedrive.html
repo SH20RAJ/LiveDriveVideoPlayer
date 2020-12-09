@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Live Google Drive Video Player </title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h1><div class=" bttn-stretch bttn-md header"> <img width="15px" src="logo.png" alt="" srcset=""> Live Drive Player by CodeXD - India</div></h1>
+    <style>
+        img {
+            background:#EC407A;
+            border-radius: 50%;
+            
+        }
+        h1 {
+            background:#EC407A;
+        }
+        .header {
+            font-size: 60px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 60px;
+        }
+        body {
+            background: rgb(50, 193, 236);
+        }
+        input , button {
+            outline: none;
+        }
+
+        input{
+            width: 400px;
+        }
+        .middle {
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate( -50% , -50%);
+        }
+
+        .container {
+            top: 40%;
+            left: 50%;
+            position: absolute;
+            transform: translate( -50% , -50%);
+        }
+
+        #visit {
+            top: 80%;
+            left: 50%;
+            position: absolute;
+            transform: translate( -50% , -50%);
+        }
+        a{
+            text-decoration: none;
+        }
+        
+    </style>
+    <div class="video">
+
+    </div>
+    <div class="middle container">
+        <h2 class="bttn-fill" >Enter Google Drive File ID</h2>
+        <br>
+        <input type="text" class="bttn-unite bttn-lg" name="id" id="id">
+        <button class="bttn-unite bttn-lg" onclick="show()">Show Your Link</button>
+        <br><br>
+        
+    </div>
+    <div class="middle bttn-stretch bttn-md" id="show"></div>
+    <br><br>
+    <span class="bttn-pill bttn-md" style="color : #03A9F4 ;" id="visit"> 
+        <a href="https://www.youtube.com/channel/UCFPFrVOaeG3q1PEzpeh7hCg" target="_blank"> Visit Channel <i style="color : #EF5350 ;" class="fa fa-youtube"></i></a></span>
+    
+    <script>
+        var siteurl = "https://sh20raj.github.io/LiveDriveVideoPlayer/embed?id=" ;
+        function show(){
+            var vidurl = siteurl + document.getElementById('id').value;
+            document.getElementById('show').innerHTML = vidurl ;
+            document.getElementById('visit').innerHTML = "<a href='"+vidurl+"' target='_blank' > View Video <i style='color : rgb(241, 58, 58) ;' class='fa fa-play-circle'></i></a>";
+        }
+    </script>
+</body>
+</html>

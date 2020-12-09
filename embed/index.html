@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Video Player</title>
+</head>
+<body>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    </style>
+    <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+    <script>
+        var apikey = "AIzaSyAHIDPKFSVbDwk-NdlAW8n3uh2q6AJkyAA";
+        var video = document.location.search ;
+        video = video.substr(4);
+        video = "https://www.googleapis.com/drive/v3/files/"+video+"?alt=media&key="+apikey;
+
+        //document.getElementById('video').innerHTML = ' Hii '  ;
+        document.write("<video controls id='video-id' src="+video+"></video>");
+    </script>
+
+
+<script>
+    var myFP = fluidPlayer(
+        'video-id',	{
+	"layoutControls": {
+		"controlBar": {
+			"autoHideTimeout": 3,
+			"animated": true,
+			"autoHide": true
+		},
+		"htmlOnPauseBlock": {
+			"html": null,
+			"height": null,
+			"width": null
+		},
+		"autoPlay": true,
+		"mute": true,
+		"allowTheatre": true,
+		"playPauseAnimation": true,
+		"playbackRateEnabled": true,
+		"allowDownload": true,
+		"playButtonShowing": true,
+		"fillToContainer": false,
+		"posterImage": ""
+	},
+	"vastOptions": {
+		"adList": [],
+		"adCTAText": false,
+		"adCTATextPosition": ""
+	}
+})
+</script>
+</body>
+</html>
