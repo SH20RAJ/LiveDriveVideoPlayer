@@ -1,119 +1,124 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Live Google Drive Video Player by SH20RAJ</title>
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Drive Video Player</title>
+	<link rel="shortcut icon" href="https://bit.ly/samplefavicon" type="image/x-icon">
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
 </head>
 <body>
-    <h1><div class=" bttn-stretch bttn-md header"> <img width="15px" src="logo.png" alt="" srcset=""> Live Drive Player by CodeXD - India</div></h1>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
 
-    <div class="video">
+		video {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+.embed {
+    position: absolute;
+    background: none;
+    top: 2px;
+    z-index: 999;
+    color: aqua;
+    font-family: sans-serif;
+    font-size: 18px;
+    border: 0;
+    font-weight: 600;
+    right: 10px;
+}
+	</style>
+	<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js">
+	</script>
+	<script>
+		var apikey = "AIzaSyAHIDPKFSVbDwk-NdlAW8n3uh2q6AJkyAA";//Your Drive Api Key
+        var eid="";
+        var video="";
+        var embed="";
 
-    </div>
-    <div class="middle container">
-        <h2 class="bttn-fill" >Enter Google Drive File ID</h2>
-        <br>
-        <input type="text" class="bttn-unite bttn-lg" name="id" id="id">
-        <button class="bttn-unite bttn-lg" onclick="show()">Show Your Link</button>
-        <br><br>
-        
-    </div>
-    <div class="middle">
-    <div class="bttn-stretch bttn-md" id="show"></div>
-    </div>
-    <div class="iframecode">
-    <div id="iframecode"></div>
-<br><br>
-<img id="thumb" src="" alt="">
-    </div>
-    
-    <br><br>
+        if(!getParameterByName('id') || getParameterByName('ib')){
+          var eid = prompt('Enter Drive Video ID :- ');
+          embed = `
+<iframe width="560" height="315" 
+scrolling="no"
+src="${location.href}?id=${eid}" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+          `;
+          prompt('Here is Your Embed Code :- ',embed);
+          window.location.href = window.location.href+'?id='+eid;
+        } 
+        video = getParameterByName('id') ;
+        if(getParameterByName('ib')){
+            video = btoa(getParameterByName('ib'));
+        }
+        var vidurl = "https://www.googleapis.com/drive/v3/files/"+video+"?alt=media&key="+apikey;
+        document.write("<video controls id='video' src="+vidurl+"></video>");
 
-    <span class="bttn-pill bttn-md" style="color : #03A9F4 ;" id="visit"> 
-        <a href="https://www.youtube.com/channel/UCFPFrVOaeG3q1PEzpeh7hCg" target="_blank"> Visit Channel <i style="color : #EF5350 ;" class="fa fa-youtube"></i></a></span>
-    
-    <script>
-        var siteurl = "https://sh20raj.github.io/LiveDriveVideoPlayer/embed?id=" ;
-        function show(){
-            var vidurl = siteurl + document.getElementById('id').value;
-            var frame = '<iframe width="560" scrolling="no" height="315" src="'+vidurl+'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-            document.getElementById('show').innerHTML = vidurl ;
-            document.getElementById('thumb').src = document.getElementById('id').value ;
-            document.getElementById('visit').innerHTML = "<a href='"+vidurl+"' target='_blank' > View Video <i style='color : rgb(241, 58, 58) ;' class='fa fa-play-circle'></i></a>";
-            document.getElementById('iframecode').innerHTML = '<div style="background-color: #1e1e1e; color: #d4d4d4; font-family: Consolas, &quot;Courier New&quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;"><div><span style="color: grey;">&lt;</span><span style="color: #569cd6;">iframe</span>&nbsp;<span style="color: #9cdcfe;">width</span>=<span style="color: #ce9178;">"560"</span>&nbsp;<span style="color: #9cdcfe;">height</span>=<span style="color: #ce9178;">"315"</span>&nbsp;</div><div><span style="color: #9cdcfe;">scrolling</span>=<span style="color: #ce9178;">"no"</span></div><div><span style="color: #9cdcfe;">src</span>=<span style="color: #ce9178;">"'+vidurl+'"</span>&nbsp;</div><div><span style="color: #9cdcfe;">frameborder</span>=<span style="color: #ce9178;">"0"</span>&nbsp;<span style="color: #9cdcfe;">allow</span>=<span style="color: #ce9178;">"accelerometer;&nbsp;autoplay;&nbsp;clipboard-write;&nbsp;encrypted-media;&nbsp;</span></div><div><span style="color: #ce9178;">gyroscope;&nbsp;picture-in-picture"</span>&nbsp;<span style="color: #9cdcfe;">allowfullscreen</span><span style="color: grey;">&gt;</span></div><div><span style="color: grey;">&lt;/</span><span style="color: #569cd6;">iframe</span><span style="color: grey;">&gt;</span></div></div>'+frame;
-        }
-    </script>
-        <style>
-        img {
-            background:#EC407A;
-            border-radius: 50%;
-            
-        }
-        .iframecode {
-            text-align: center;
-            border-radius: 10%;
-            top: 95%;
-            left: 50%;
-            position: absolute;
-            transform: translate( -50% , -50%);
-        }
-        iframe {
-            overflow:hidden; 
-        }
-        .hidden {
-            display: none;
-        }
-        h1 {
-            background:#EC407A;
-        }
-        .header {
-            font-size: 60px;
-        }
-        h2 {
-            text-align: center;
-            font-size: 60px;
-        }
-        body {
-            background: rgb(50, 193, 236);
-        }
-        input , button {
-            outline: none;
-        }
 
-        input{
-            width: 400px;
-        }
-        .middle {
-            top: 50%;
-            left: 50%;
-            position: absolute;
-            transform: translate( -50% , -50%);
-        }
+function getembed(){
+            var code = `
+<iframe width="560" height="315" 
+scrolling="no"
+src="${location.href}?id=${video}" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+          `;
+          prompt('Here is Your Embed Code :- ',code);
+}
 
-        .container {
-            top: 40%;
-            left: 50%;
-            position: absolute;
-            transform: translate( -50% , -50%);
-        }
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+	</script>
 
-        #visit {
-            top: 80%;
-            left: 50%;
-            position: absolute;
-            transform: translate( -50% , -50%);
-        }
-        a{
-            text-decoration: none;
-        }
-        #show {
-            text-align: center;
-        }
-    </style>
 
+	<script>
+		var myFP = fluidPlayer(
+        'video',	{
+	"layoutControls": {
+		"controlBar": {
+			"autoHideTimeout": 3,
+			"animated": true,
+			"autoHide": true
+		},
+		"htmlOnPauseBlock": {
+			"html": '<button class=\"embed\" onclick=\"getembed()\">Embed</button>\n',
+			"height": null,
+			"width": null
+		},
+		"autoPlay": true,
+		"mute": true,
+		"allowTheatre": true,
+		"playPauseAnimation": true,
+		"playbackRateEnabled": true,
+		"allowDownload": false,
+		"playButtonShowing": true,
+		"fillToContainer": false,
+		"posterImage": ""
+	},
+	"vastOptions": {
+		"adList": [],
+		"adCTAText": false,
+		"adCTATextPosition": ""
+	}
+})
+
+	</script>
 </body>
+
 </html>
